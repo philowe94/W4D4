@@ -28,7 +28,32 @@ class Array
 
         return newArray
     end
+
+    def my_transpose
+        newArray = []
+
+        newArray = self.transpose
+        newArray
+    end
+
+    def stock_picker
+        newArray = []
+        diff = 0
+        self.each_with_index do |ele1, idx1|
+            self.each_with_index do |ele2, idx2|
+                if idx2 > idx1
+                    if ele2 - ele1 > diff
+                        newArray = [idx1, idx2]
+                        diff = ele2 - ele1
+                    end
+                end
+            end
+        end
+
+        return newArray
+    end
 end
+
 
 
 
