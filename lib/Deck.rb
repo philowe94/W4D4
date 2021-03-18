@@ -5,15 +5,12 @@ RANK = [ "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"].freez
 
 class Deck
 
-    attr_reader :deck
+    attr_reader :deck, :discard
 
     def initialize
-
-        @deck = []
-        populate_deck
+        @deck = Deck.populate_deck
         shuffle
-        # p @deck
-
+        @discard = []
     end
 
     def draw
@@ -24,15 +21,20 @@ class Deck
         @deck.shuffle
     end
 
+    def burn
+        @discard << @deck.pop
+    end
 
     private
 
-    def populate_deck
+    def self.populate_deck
+        shuffled_deck = []
         SUITS.each do |suit|
             RANK.each do |rank|
-                @deck << Card.new(suit, rank)
+                shuffled_deck << Card.new(suit, rank)
             end
         end
+        return shuffled_deck
     end
 
 

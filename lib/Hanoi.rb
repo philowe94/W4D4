@@ -5,7 +5,7 @@ class Hanoi
     def initialize        
         @towers = [[8, 7, 6, 5, 4, 3, 2, 1] , [] ,[]]
     end
-
+    
     def move(from, to)
         if @towers[from].empty?
             raise "You cannot take something from an empty array"
